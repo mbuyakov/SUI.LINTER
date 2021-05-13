@@ -2,7 +2,7 @@
 
 pipeline {
 
-  agent any
+  agent { label 'master' }
 
   options {
       buildDiscarder logRotator(numToKeepStr: '3')
@@ -10,11 +10,32 @@ pipeline {
   }
 
   parameters {
+          booleanParam(defaultValue: true, description: 'Build', name: 'build')
           booleanParam(defaultValue: true, description: 'Publish', name: 'publish')
           booleanParam(defaultValue: false, description: 'Clean workspace', name: 'clean_ws')
   }
 
   stages {
+    stage("Install dependencies") {
+      when {
+        environment name: 'build', value: 'true'
+      }
+      steps {
+          sh """
+            yarn install --frozen-lockfile
+          """
+      }
+    }
+    stage("Build") {
+          when {
+            environment name: 'build', value: 'true'
+          }
+          steps {
+              sh """
+                yarn build
+              """
+          }
+        }
     stage("Publish") {
       when {
         environment name: 'publish', value: 'true'
