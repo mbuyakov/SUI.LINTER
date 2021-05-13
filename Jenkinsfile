@@ -25,11 +25,12 @@ pipeline {
         NPM_USER = "jenkins"
         NPM_EMAIL = "jenkins@jenkins.jenkins"
         NPM_PASS = credentials('suilib-nexus-pass')
+        SUFFIX = "${env.BRANCH_NAME == "master" ? "" : ("-" + env.BRANCH_NAME)}"
       }
       steps {
           sh """
             npx npm-cli-adduser
-            yarn publish --registry ${NPM_REGISTRY} --non-interactive --no-git-tag-version --new-version 1.0.${BUILD_NUMBER}-${BRANCH_NAME}
+            yarn publish --registry ${NPM_REGISTRY} --non-interactive --no-git-tag-version --new-version 1.0.${BUILD_NUMBER}${SUFFIX}
           """
       }
     }
