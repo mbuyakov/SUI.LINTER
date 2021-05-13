@@ -27,9 +27,11 @@ const options = yargs(hideBin(process.argv)).argv;
     }
   }
   console.log(`Total files: ${files.length}`);
-  // const configPath = path.resolve(`${rootDir}/.eslintrc.js`);
-  // const eslintConfig = require(configPath);
-  // console.log(eslintConfig);
+
+  if (options.timing) {
+    process.env.TIMING = "all"
+  }
+
   const eslint = new ESLint({
     cache: true
   });
