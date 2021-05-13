@@ -45,6 +45,10 @@ module.exports = {
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "camelcase": 1,
+    "@typescript-eslint/ban-types": 1,
+    "no-use-before-define": 1,
+    "@typescript-eslint/ban-ts-comment": 1,
     "@typescript-eslint/no-unused-vars": 1,
     "@typescript-eslint/indent": 0,
     "@typescript-eslint/array-type": 0,
