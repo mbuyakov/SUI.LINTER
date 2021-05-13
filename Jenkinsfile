@@ -46,7 +46,7 @@ pipeline {
         NPM_USER = "jenkins"
         NPM_EMAIL = "jenkins@jenkins.jenkins"
         NPM_PASS = credentials('suilib-nexus-pass')
-        SUFFIX = "${env.BRANCH_NAME == "master" ? "" : ("-" + env.BRANCH_NAME)}"
+        SUFFIX = "${env.BRANCH_NAME == "master" ? " " : ("-" + env.BRANCH_NAME)}"
       }
       steps {
           sh """
