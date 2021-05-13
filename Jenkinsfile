@@ -1,6 +1,9 @@
 @Library('smsoft-libs')_
 
 pipeline {
+
+  agent any
+
   options {
       buildDiscarder logRotator(numToKeepStr: '3')
       disableConcurrentBuilds()
