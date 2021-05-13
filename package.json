@@ -1,0 +1,42 @@
+{
+  "name": "@sui/linter",
+  "version": "1.0.0",
+  "repository": "git@github.com:mbuyakov/SUI.LINTER.git",
+  "author": "Dmitry Khodorov <el1191@woyd.ru>",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "publishConfig": {
+    "registry": "https://nexus.suilib.ru/repository/npm-sui/"
+  },
+  "bin": {
+    "sui-linter": "bin/sui-linter.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    ".eslintrc.js"
+  ],
+  "dependencies": {
+    "@types/eslint": "^7.2.10",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.3"
+  }
+}
