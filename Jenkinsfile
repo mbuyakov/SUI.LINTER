@@ -29,7 +29,7 @@ pipeline {
       steps {
           sh """
             npx npm-cli-adduser
-            yarn publish
+            yarn publish --registry ${NPM_REGISTRY} --non-interactive --no-git-tag-version --new-version 1.0.${BUILD_NUMBER}-${BRANCH_NAME}
           """
       }
     }
