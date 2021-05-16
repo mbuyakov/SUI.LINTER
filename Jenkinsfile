@@ -3,7 +3,7 @@ pipeline {
     docker {
       image 'node:14-alpine'
       reuseNode true
-      args '-e YARN_CACHE_FOLDER=/yarn -v $HOME/yarn:/yarn'
+      args '-e YARN_CACHE_FOLDER=$HOME/yarn'
     }
   }
 
