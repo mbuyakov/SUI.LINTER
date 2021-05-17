@@ -23,26 +23,31 @@ pipeline {
       when {
         environment name: 'build', value: 'true'
       }
+
+      steps {
+        sh """
+          yarn install --frozen-lockfile
+        """
+      }
+    }
+
+    stage("Build") {
+      when {
+        environment name: 'build', value: 'true'
+      }
+
       steps {
           sh """
-            yarn install --frozen-lockfile
+            yarn build
           """
       }
     }
-    stage("Build") {
-          when {
-            environment name: 'build', value: 'true'
-          }
-          steps {
-              sh """
-                yarn build
-              """
-          }
-        }
+
     stage("Publish") {
       when {
         environment name: 'publish', value: 'true'
       }
+
       environment {
         NPM_REGISTRY = "https://nexus.suilib.ru/repository/npm-sui/"
         NPM_SCOPE = "@sui"
@@ -51,6 +56,7 @@ pipeline {
         NPM_PASS = credentials('suilib-nexus-pass')
         SUFFIX = "${env.BRANCH_NAME == "master" ? " " : ("-" + env.BRANCH_NAME)}"
       }
+
       steps {
           sh """
             npx npm-cli-adduser
