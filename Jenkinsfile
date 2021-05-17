@@ -1,18 +1,21 @@
-@Library('smsoft-libs')_
-
 pipeline {
-
-  agent { label 'master' }
+  agent {
+    docker {
+      image 'node:14-alpine'
+      reuseNode true
+      args '-e HOME=$HOME'
+    }
+  }
 
   options {
-      buildDiscarder logRotator(numToKeepStr: '3')
-      disableConcurrentBuilds()
+    buildDiscarder logRotator(numToKeepStr: '3')
+    disableConcurrentBuilds()
   }
 
   parameters {
-          booleanParam(defaultValue: true, description: 'Build', name: 'build')
-          booleanParam(defaultValue: true, description: 'Publish', name: 'publish')
-          booleanParam(defaultValue: false, description: 'Clean workspace', name: 'clean_ws')
+    booleanParam(defaultValue: true, description: 'Build', name: 'build')
+    booleanParam(defaultValue: true, description: 'Publish', name: 'publish')
+    booleanParam(defaultValue: false, description: 'Clean workspace', name: 'clean_ws')
   }
 
   stages {
@@ -63,12 +66,6 @@ pipeline {
       steps {
         cleanWs()
       }
-    }
-  }
-
-  post {
-    failure {
-      telegramSendNotification("@el1191")
     }
   }
 }
