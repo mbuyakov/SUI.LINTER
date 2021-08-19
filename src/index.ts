@@ -36,6 +36,11 @@ const options = yargs(hideBin(process.argv)).options({
     fix: options.fix
   });
   let results = await eslint.lintFiles(files);
+
+  if (options.fix) {
+    await ESLint.outputFixes(results);
+  }
+
   const errors = ESLint.getErrorResults(results);
 
   if (options.quiet) {
