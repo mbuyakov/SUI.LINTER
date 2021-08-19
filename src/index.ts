@@ -5,7 +5,7 @@ import yargs from "yargs/yargs";
 import {hideBin} from "yargs/helpers";
 
 const options = yargs(hideBin(process.argv)).options({
-  timing: { type: 'boolean' },
+  fix: { type: 'boolean' },
   quiet: { type: 'boolean' },
 }).parseSync();
 
@@ -31,23 +31,25 @@ const options = yargs(hideBin(process.argv)).options({
   }
   console.log(`Total files: ${files.length}`);
 
-  if (options.timing) {
-    process.env.TIMING = "all"
-  }
-
   const eslint = new ESLint({
-    cache: true
+    cache: true,
+    fix: options.fix
   });
   let results = await eslint.lintFiles(files);
+  const errors = ESLint.getErrorResults(results);
 
   if (options.quiet) {
     console.log("Quiet mode enabled - filtering out warnings");
-    results = ESLint.getErrorResults(results);
+    results = errors;
   }
 
   const formatter = await eslint.loadFormatter("stylish");
   const resultText = formatter.format(results);
   console.log(resultText);
+
+  if (errors.length > 0) {
+    process.exitCode = 1;
+  }
 
 })().catch((error) => {
   process.exitCode = 1;
