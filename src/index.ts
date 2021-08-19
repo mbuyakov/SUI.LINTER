@@ -4,7 +4,10 @@ import {getFiles} from "./utils/fs";
 import yargs from "yargs/yargs";
 import {hideBin} from "yargs/helpers";
 
-const options = yargs(hideBin(process.argv)).argv;
+const options = yargs(hideBin(process.argv)).options({
+  timing: { type: 'boolean' },
+  quiet: { type: 'boolean' },
+}).parseSync();
 
 (async function main() {
   let rootDir = process.cwd();

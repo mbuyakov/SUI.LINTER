@@ -23,7 +23,8 @@ module.exports = {
   ],
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
+    "airbnb-base",
+    "airbnb/rules/react",
 //    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
