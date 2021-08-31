@@ -173,6 +173,7 @@ module.exports = {
           "antd/*",
           "!antd/es/locale/*",
           "!antd/es/date-picker/locale/*",
+          "!antd/dist/theme",
           "@material-ui/*/*/*",
           "!@material-ui/core/test-utils/*",
           "@ant-design/icons/*",
