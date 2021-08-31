@@ -170,6 +170,9 @@ module.exports = {
       "error",
       {
         "patterns": [
+          "antd/*",
+          "!antd/es/locale/*",
+          "!antd/es/date-picker/locale/*",
           "@material-ui/*/*/*",
           "!@material-ui/core/test-utils/*",
           "@ant-design/icons/*",
