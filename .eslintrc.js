@@ -18,14 +18,12 @@ module.exports = {
   },
   "plugins": [
     "react",
-    "@typescript-eslint",
-//    "prettier"
+    "@typescript-eslint"
   ],
   "extends": [
     "plugin:react/recommended",
     "airbnb-base",
     "airbnb/rules/react",
-//    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -40,7 +38,6 @@ module.exports = {
         "tsx": "never"
       }
     ],
-//    "prettier/prettier": "error",
 //    "@typescript-eslint/no-unused-vars": "off",
     "react/jsx-filename-extension": [
       1,
@@ -170,6 +167,7 @@ module.exports = {
       "error",
       {
         "patterns": [
+          "antd/*",
           "@material-ui/*/*/*",
           "!@material-ui/core/test-utils/*",
           "@ant-design/icons/*",
