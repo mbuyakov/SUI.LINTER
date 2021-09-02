@@ -25,7 +25,7 @@ const options = yargs(hideBin(process.argv)).options({
 
   const files = [];
   for await (const f of getFiles(srcDir)) {
-    if (f.endsWith(".ts") || f.endsWith(".tsx") || f.endsWith(".js") || f.endsWith(".jsx")) {
+    if ((f.endsWith(".ts") || f.endsWith(".tsx") || f.endsWith(".js") || f.endsWith(".jsx")) && !f.includes("/.umi/")) {
       files.push(f);
     }
   }
