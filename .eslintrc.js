@@ -167,6 +167,7 @@ module.exports = {
       "error",
       {
         "patterns": [
+          "@sentry/*",
           "antd/*",
           "@material-ui/*/*/*",
           "!@material-ui/core/test-utils/*",
