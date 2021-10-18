@@ -167,6 +167,8 @@ module.exports = {
       "error",
       {
         "patterns": [
+          "@sui/*",
+          "!@sui/all",
           "@sentry/*",
           "antd/*",
           "@material-ui/*/*/*",
