@@ -19,7 +19,8 @@
   "files": [
     "bin",
     "dist",
-    ".eslintrc.js"
+    ".eslintrc.js",
+    ".eslintrc-lib.js"
   ],
   "scripts": {
     "build": "tsc --outDir dist"
